@@ -2,24 +2,22 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
-const bodyParser = require("body-parser");
+const bodyParser = require('body-parser');
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-
-
-
-
-
-
-
-
-
-
-//middelwares
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors());
 
+//routes import
+const exerciseroutes = require('./routes/exercise')
+
+//routes
+app.use("/api",exerciseroutes)
+
+//middelwares
+
+app.use(bodyParser.urlencoded({ extended: true }));
 //DB Connect
 mongoose.connect(process.env.DATABASE,{
     useNewUrlParser: true,
