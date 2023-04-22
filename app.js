@@ -10,10 +10,11 @@ app.use(cookieParser());
 app.use(cors());
 
 //routes import
-const exerciseroutes = require('./routes/exercise')
-
+const exerciseRoutes = require('./routes/exercise')
+const programRoutess = require('./routes/program')
 //routes
-app.use("/api",exerciseroutes)
+app.use("/api",exerciseRoutes)
+app.use("/api",programRoutess)
 
 //middelwares
 
